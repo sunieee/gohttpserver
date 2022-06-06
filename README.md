@@ -1,3 +1,11 @@
+修改curl的输出方式，replace("/app/public/", "")，输出单纯字符串
+```
+(base) CN0214004289M:2022 sunye$ curl -F file=@cli/Makefile 192.168.0.5:8000
+"Makefile"
+(base) CN0214004289M:2022 sunye$ curl -F file=@cli/Makefile 192.168.0.5:8000/assets
+"assets/Makefile"
+```
+
 # gohttpserver
 [![Build Status](https://travis-ci.org/codeskyblue/gohttpserver.svg?branch=master)](https://travis-ci.org/codeskyblue/gohttpserver)
 [![Docker Automated build](https://img.shields.io/docker/automated/codeskyblue/gohttpserver)](https://hub.docker.com/repository/docker/codeskyblue/gohttpserver)

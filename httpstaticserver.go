@@ -208,8 +208,15 @@ func (s *HTTPStaticServer) hUploadOrMkdir(w http.ResponseWriter, req *http.Reque
 	}
 
 	if file == nil { // only mkdir
-		w.Header().Set("Content-Type", "text/plain;charset=utf-8")
-		json.NewEncoder(w).Encode(strings.Split(dirpath, "/app/public/")[1])
+		w.Header().Set("Content-Type", "application/json;charset=utf-8")
+		// json.NewEncoder(w).Encode(map[string]interface{}{
+		// 	"success":     true,
+		// 	"destination": dirpath,
+		// })
+
+		json.NewEncoder(w).Encode(map[string]interface{}{
+			"destination": strings.Replace(dirpath, "/app/public/", "", 1),
+		})
 		return
 	}
 
@@ -274,11 +281,26 @@ func (s *HTTPStaticServer) hUploadOrMkdir(w http.ResponseWriter, req *http.Reque
 		if err != nil {
 			message = err.Error()
 		}
+		// json.NewEncoder(w).Encode(map[string]interface{}{
+		// 	"success":     err == nil,
+		// 	"description": message,
+		// })
+
 		json.NewEncoder(w).Encode(message)
 		return
 	}
 
-	json.NewEncoder(w).Encode(strings.Split(dstPath, "/app/public/")[1])
+	// json.NewEncoder(w).Encode(map[string]interface{}{
+	// 	"success":     true,
+	// 	"destination": dstPath,
+	// })
+
+	// json.NewEncoder(w).Encode(map[string]interface{}{
+	// 	"destination": strings.Replace(dstPath, "/app/public/", "", 1),
+	// })
+
+	json.NewEncoder(w).Encode(strings.Replace(dstPath, "/app/public/", "", 1))
+	
 }
 
 type FileJSONInfo struct {
