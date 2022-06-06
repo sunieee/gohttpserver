@@ -214,9 +214,10 @@ func (s *HTTPStaticServer) hUploadOrMkdir(w http.ResponseWriter, req *http.Reque
 		// 	"destination": dirpath,
 		// })
 
-		json.NewEncoder(w).Encode(map[string]interface{}{
-			"destination": strings.Replace(dirpath, "/app/public/", "", 1),
-		})
+		// json.NewEncoder(w).Encode(map[string]interface{}{
+		// 	"destination": strings.Replace(dirpath, "/app/public/", "", 1),
+		// })
+		w.Write([]byte(strings.Replace(dirpath, "/app/public/", "", 1)))
 		return
 	}
 
@@ -285,8 +286,7 @@ func (s *HTTPStaticServer) hUploadOrMkdir(w http.ResponseWriter, req *http.Reque
 		// 	"success":     err == nil,
 		// 	"description": message,
 		// })
-
-		json.NewEncoder(w).Encode(message)
+		w.Write([]byte(message))
 		return
 	}
 
@@ -298,9 +298,10 @@ func (s *HTTPStaticServer) hUploadOrMkdir(w http.ResponseWriter, req *http.Reque
 	// json.NewEncoder(w).Encode(map[string]interface{}{
 	// 	"destination": strings.Replace(dstPath, "/app/public/", "", 1),
 	// })
-
-	json.NewEncoder(w).Encode(strings.Replace(dstPath, "/app/public/", "", 1))
-	
+	ret := strings.Replace(dstPath, "/app/public/", "", 1)
+	fmt.Println(ret)
+	// json.NewEncoder(w).Encode(ret)
+	w.Write([]byte(ret))
 }
 
 type FileJSONInfo struct {
