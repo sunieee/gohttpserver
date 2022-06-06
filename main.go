@@ -92,7 +92,7 @@ func versionMessage() string {
 func parseFlags() error {
 	// initial default conf
 	gcfg.Root = "./"
-	gcfg.Port = 8000
+	gcfg.Port = 9000
 	gcfg.Addr = ""
 	gcfg.Theme = "black"
 	gcfg.PlistProxy = defaultPlistProxy
