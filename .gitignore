@@ -24,7 +24,7 @@ _testmain.go
 *.prof
 
 
-gohttpserver
+# gohttpserver
 bindata_assetfs.go
 assets_vfsdata.go
 *.un~
