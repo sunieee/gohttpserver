@@ -30,4 +30,4 @@ assets_vfsdata.go
 *.un~
 *.swp
 
-dist/
+# dist/
