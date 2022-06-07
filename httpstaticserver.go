@@ -273,7 +273,7 @@ func (s *HTTPStaticServer) hUploadOrMkdir(w http.ResponseWriter, req *http.Reque
 		return
 	}
 
-	w.Header().Set("Content-Type", "text/plain;charset=utf-8")
+	w.Header().Set("Content-Type", "application/json;charset=utf-8")
 
 	if req.FormValue("unzip") == "true" {
 		err = unzipFile(dstPath, dirpath)
